@@ -2,3 +2,5 @@
 .venv
 __pycache__/
 example_command.txt
+totals.parquet
+transactions.parquet
