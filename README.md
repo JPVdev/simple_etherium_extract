@@ -51,7 +51,6 @@ docker exec -it ethereum-transaction-processor /bin/bash
 
 ### output the output files of the container
 ```bash
-
-docker run -v $(pwd):/app/output -e INFURA_API_KEY="YOUR_INFURA_KEY" ethereum-transaction-processor "The block num"
+docker run -v $(pwd):/app -e INFURA_API_KEY="YOUR_INFURA_KEY" ethereum-transaction-processor "The block num"
     
 ```
