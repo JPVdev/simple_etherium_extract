@@ -49,6 +49,7 @@ def process_transactions(transactions):
     for tx in transactions:
         from_address = tx.get('from')
         to_address = tx.get('to')
+        # print(tx)
         value = int(tx.get('value', '0'), 16)  # Convert hex to int, default to 0 if 'value' is missing
 
         if from_address:
@@ -73,15 +74,16 @@ def write_data(df, unique_address_count, total_value):
     Writes the processed transaction data and totals to Parquet files.
     """
     try:
+        df['value'] = df['value'].astype(str)
         df.to_parquet('transactions.parquet')
+        
         totals_data = {
             'count_unique_addresses': [unique_address_count],
-            'sum_value': [total_value],
+            'sum_value': [str(total_value)], 
         }
         totals_df = pd.DataFrame(totals_data)
         totals_df.to_parquet('totals.parquet')
 
         print("Data written to transactions.parquet and totals.parquet")
-
     except Exception as e:
         print(f"Error writing to Parquet files: {e}")
