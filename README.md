@@ -44,9 +44,14 @@ docker build -t ethereum-transaction-processor .
 docker run -e INFURA_API_KEY="<INFURA_API_KEY>" ethereum-transaction-processor <block_number>
 ```
 
+### view running containers
+```bash
+docker ps
+```
+
 ### ssh into container if still running
 ```bash
-docker exec -it ethereum-transaction-processor /bin/bash
+docker exec -it <container_name or id> /bin/bash
 ```
 
 ### output the output files of the container
